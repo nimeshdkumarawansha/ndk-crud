@@ -28,6 +28,12 @@ class MakeNdkCrudCommand extends Command
     public function handle()
     {
         $model = $this->argument('model');
+        $modelPath = app_path("Models/{$model}.php");
+
+        if (File::exists($modelPath)) {
+            $this->error("Model '{$model}' already exists!");
+            return Command::FAILURE;
+        }
         
         // Ask for table columns
         $columns = $this->askForColumns();

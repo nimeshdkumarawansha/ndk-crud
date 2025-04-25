@@ -1,2 +1,12 @@
 // {{ modelNamePluralLowerCase }} routes
-Route::resource('{{ modelNamePluralLowerCase }}', App\Http\Controllers\{{ controllerName }}::class);
+use App\Http\Controllers\{{ controllerName }};
+
+Route::prefix('{{ modelNamePluralLowerCase }}')->group(function () {
+    Route::get('/', [{{ controllerName }}::class, "index"])->name('{{ modelNamePluralLowerCase }}.index');
+    Route::get('/all', [{{ controllerName }}::class, "all"])->name('{{ modelNamePluralLowerCase }}.all');
+    Route::get('/{{{ modelNamePluralLowerCase }}_id}/get', [{{ controllerName }}::class, "get"])->name('{{ modelNamePluralLowerCase }}.get');
+    Route::post('/store', [{{ controllerName }}::class, "store"])->name('{{ modelNamePluralLowerCase }}.store');
+    Route::get('/{{{ modelNamePluralLowerCase }}_id}/edit', [{{ controllerName }}::class, "edit"])->name('{{ modelNamePluralLowerCase }}.edit');
+    Route::post('/{{{ modelNamePluralLowerCase }}_id}/update', [{{ controllerName }}::class, "update"])->name('{{ modelNamePluralLowerCase }}.update');
+    Route::delete('/{{{ modelNamePluralLowerCase }}_id}/delete', [{{ controllerName }}::class, "delete"])->name('{{ modelNamePluralLowerCase }}.delete');
+});

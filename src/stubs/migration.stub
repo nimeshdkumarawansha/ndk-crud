@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('{{ tableNamePluralLowerCase }}', function (Blueprint $table) {
             $table->id();
-{{ tableColumns }}
+            {{ tableColumns }}
             $table->timestamps();
         });
     }
