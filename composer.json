@@ -1,0 +1,31 @@
+{
+    "name": "ndkumarawansha/ndk-crud",
+    "description": "A Laravel package to generate CRUD operations with a single command",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nimesh Dilshan",
+            "email": "ndkumarawansha@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/console": "^10.0|^11.0|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ndkumarawansha\\NdkCrud\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ndkumarawansha\\NdkCrud\\NdkCrudServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

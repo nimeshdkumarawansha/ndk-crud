@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{ modelName }};
+use Illuminate\Http\Request;
+
+class {{ controllerName }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        ${{ modelNamePluralLowerCase }} = {{ modelName }}::latest()->paginate(10);
+        
+        return view('{{ modelNamePluralLowerCase }}.index', compact('{{ modelNamePluralLowerCase }}'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('{{ modelNamePluralLowerCase }}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            // Add validation rules based on your model fields
+        ]);
+        
+        {{ modelName }}::create($request->all());
+        
+        return redirect()->route('{{ modelNamePluralLowerCase }}.index')
+            ->with('success', '{{ modelName }} created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show({{ modelName }} ${{ modelNameLowerCase }})
+    {
+        return view('{{ modelNamePluralLowerCase }}.show', compact('{{ modelNameLowerCase }}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit({{ modelName }} ${{ modelNameLowerCase }})
+    {
+        return view('{{ modelNamePluralLowerCase }}.edit', compact('{{ modelNameLowerCase }}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, {{ modelName }} ${{ modelNameLowerCase }})
+    {
+        $request->validate([
+            // Add validation rules based on your model fields
+        ]);
+        
+        ${{ modelNameLowerCase }}->update($request->all());
+        
+        return redirect()->route('{{ modelNamePluralLowerCase }}.index')
+            ->with('success', '{{ modelName }} updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy({{ modelName }} ${{ modelNameLowerCase }})
+    {
+        ${{ modelNameLowerCase }}->delete();
+        
+        return redirect()->route('{{ modelNamePluralLowerCase }}.index')
+            ->with('success', '{{ modelName }} deleted successfully.');
+    }
+}

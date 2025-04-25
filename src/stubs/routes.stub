@@ -1,0 +1,2 @@
+// {{ modelNamePluralLowerCase }} routes
+Route::resource('{{ modelNamePluralLowerCase }}', App\Http\Controllers\{{ controllerName }}::class);
