@@ -1,0 +1,47 @@
+<?php
+
+namespace domain\Services\{{ modelNameCapitalized }}Service;
+
+use App\Models\{{ modelName }};
+
+class {{ serviceName }}
+{
+    protected ${{ modelNameLowerCase }};
+
+    public function __construct()
+    {
+        $this->{{ modelNameLowerCase }} = new {{ modelName }}();
+    }
+
+    public function get(int ${{ modelNameLowerCase }}_id)
+    {
+        return $this->{{ modelNameLowerCase }}->find(${{ modelNameLowerCase }}_id);
+    }
+
+    public function create(array $data)
+    {
+       return $this->{{ modelNameLowerCase }}->create($data);
+    }
+
+     protected function edit({{ modelName }} ${{ modelNameLowerCase }}, array $data)
+    {
+        return array_merge(${{ modelNameLowerCase }}->toArray(), $data);
+    }
+
+    public function update(${{ modelNameLowerCase }}_id , array $data)
+    {
+        ${{ modelNameLowerCase }} = $this->{{ modelNameLowerCase }}->find(${{ modelNameLowerCase }}_id);
+        return ${{ modelNameLowerCase }}->update($this->edit(${{ modelNameLowerCase }}, $data));
+    }
+
+    public function delete($id)
+    {
+       ${{ modelNameLowerCase }} = $this->{{ modelNameLowerCase }}->find($id);
+       return ${{ modelNameLowerCase }}->delete();
+    }
+
+    public function list()
+    {
+       return $this->{{ modelNameLowerCase }}->all();
+    }
+}
